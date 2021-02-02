@@ -45,7 +45,7 @@ pipeline {
                     script {
                         echo "prod_ip::$prod_ip"
                         echo "USERPASS::$USERPASS"
-                        sh "sudo sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$prod_ip \"docker pull thuathien99/train-schedule:${env.BUILD_NUMBER}\""
+                        sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$prod_ip \"docker pull automatest/train-schedule:${env.BUILD_NUMBER}\""
                         echo "OK"
                         try {
                             sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$prod_ip \"docker stop train-schedule\""
